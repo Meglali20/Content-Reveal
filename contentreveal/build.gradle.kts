@@ -10,7 +10,7 @@ apply(from = "${rootDir}/scripts/publish-module.gradle.kts")
 mavenPublishing {
     val artifactId = "content-reveal"
     coordinates(
-        "com.github.meglali20",
+        "io.github.meglali20",
         artifactId,
         rootProject.extra.get("libVersion").toString()
     )
