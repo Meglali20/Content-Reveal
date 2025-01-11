@@ -1,3 +1,5 @@
+import com.vanniktech.maven.publish.SonatypeHost
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -6,15 +8,17 @@ plugins {
 }
 
 apply(from = "${rootDir}/scripts/publish-module.gradle.kts")
-
 mavenPublishing {
     val artifactId = "content-reveal"
+
+    publishToMavenCentral(host = SonatypeHost.CENTRAL_PORTAL)
+    signAllPublications()
+
     coordinates(
         "io.github.meglali20",
         artifactId,
         rootProject.extra.get("libVersion").toString()
     )
-
     pom {
         name.set(artifactId)
         description.set("Reveal content with clipping on Android with Jetpack Compose.")

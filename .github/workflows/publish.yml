@@ -26,7 +26,6 @@ jobs:
         run: |
           ./gradlew publishAllPublicationsToMavenCentral --no-configuration-cache
         env:
-          ORG_GRADLE_PROJECT_sonatypeHost: "CENTRAL_PORTAL"
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.CENTRAL_USERNAME }}
           ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.CENTRAL_PASSWORD }}
           ORG_GRADLE_PROJECT_signingInMemoryKeyId: ${{ secrets.SIGNING_KEY_ID }}
