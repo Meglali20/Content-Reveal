@@ -1,3 +1,4 @@
+import com.vanniktech.maven.publish.AndroidMultiVariantLibrary
 import com.vanniktech.maven.publish.SonatypeHost
 
 plugins {
@@ -11,7 +12,13 @@ apply(from = "${rootDir}/scripts/publish-module.gradle.kts")
 mavenPublishing {
     val artifactId = "content-reveal"
 
-    publishToMavenCentral(host = SonatypeHost.CENTRAL_PORTAL)
+    configure(
+        AndroidMultiVariantLibrary(
+            sourcesJar = true
+        )
+    )
+
+    publishToMavenCentral(host = SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
     signAllPublications()
 
     coordinates(
