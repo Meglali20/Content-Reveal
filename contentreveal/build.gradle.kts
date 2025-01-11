@@ -17,7 +17,7 @@ mavenPublishing {
     coordinates(
         "io.github.meglali20",
         artifactId,
-        rootProject.extra.get("libVersion").toString()
+        "1.0.0"
     )
     pom {
         name.set(artifactId)
