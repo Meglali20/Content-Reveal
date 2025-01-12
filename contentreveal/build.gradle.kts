@@ -24,11 +24,35 @@ mavenPublishing {
     coordinates(
         "io.github.meglali20",
         artifactId,
-        "1.0.0"
+        rootProject.extra.get("libVersion").toString()
     )
+
     pom {
         name.set(artifactId)
         description.set("Reveal content with clipping on Android with Jetpack Compose.")
+        url.set("https://github.com/Meglali20/Content-Reveal")
+
+        licenses {
+            license {
+                name.set("The Apache License, Version 2.0")
+                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+            }
+        }
+
+        developers {
+            developer {
+                name.set("Oussama Meglali")
+                organizationUrl.set("https://github.com/Meglali20")
+                organization.set("Oussama Meglali")
+            }
+        }
+
+        scm {
+            connection.set("scm:git:git://github.com/Meglali20/Content-Reveal.git")
+            developerConnection.set("scm:git:ssh://github.com/Meglali20/Content-Reveal.git")
+            url.set("https://github.com/Meglali20/Content-Reveal")
+        }
+
     }
 }
 
