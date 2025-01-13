@@ -1,3 +1,6 @@
+import com.vanniktech.maven.publish.AndroidMultiVariantLibrary
+import com.vanniktech.maven.publish.SonatypeHost
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -6,11 +9,20 @@ plugins {
 }
 
 apply(from = "${rootDir}/scripts/publish-module.gradle.kts")
-
 mavenPublishing {
     val artifactId = "content-reveal"
+
+    configure(
+        AndroidMultiVariantLibrary(
+            sourcesJar = true
+        )
+    )
+
+    publishToMavenCentral(host = SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
+    signAllPublications()
+
     coordinates(
-        "com.github.meglali20",
+        "io.github.meglali20",
         artifactId,
         rootProject.extra.get("libVersion").toString()
     )
@@ -18,6 +30,29 @@ mavenPublishing {
     pom {
         name.set(artifactId)
         description.set("Reveal content with clipping on Android with Jetpack Compose.")
+        url.set("https://github.com/Meglali20/Content-Reveal")
+
+        licenses {
+            license {
+                name.set("The Apache License, Version 2.0")
+                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+            }
+        }
+
+        developers {
+            developer {
+                name.set("Oussama Meglali")
+                organizationUrl.set("https://github.com/Meglali20")
+                organization.set("Oussama Meglali")
+            }
+        }
+
+        scm {
+            connection.set("scm:git:git://github.com/Meglali20/Content-Reveal.git")
+            developerConnection.set("scm:git:ssh://github.com/Meglali20/Content-Reveal.git")
+            url.set("https://github.com/Meglali20/Content-Reveal")
+        }
+
     }
 }
 

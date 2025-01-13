@@ -1,4 +1,4 @@
-apply(plugin = "com.vanniktech.maven.publish")
+apply(plugin = "com.vanniktech.maven.publish.base")
 
 rootProject.extra.apply {
   val majorVersion = 1
