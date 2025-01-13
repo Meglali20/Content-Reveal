@@ -43,6 +43,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             ContentRevealTheme {
                 var progress by remember { mutableFloatStateOf(0f) }
+                var imageContentRevealed by remember { mutableStateOf(false) }
+                var imageContentHidden  by remember { mutableStateOf(true) }
+                var textContentRevealed by remember { mutableStateOf(false) }
+                var textContentHidden  by remember { mutableStateOf(true) }
                 Scaffold { _ ->
                     Column(
                         modifier = Modifier.fillMaxSize().padding(15.dp),
@@ -57,12 +61,21 @@ class MainActivity : ComponentActivity() {
                             },
                             enabled = true
                         )
+                        Text(text="Progress ${progress.toInt()}")
+
+
                         ContentReveal(
                             clipParticlesWithHiddenContent = true,
                             currentProgress = progress,
                             progressRange = 0..100,
                             touchEnabled = true,
                             particlesCount = 120,
+                            onFullyRevealed = {
+                                imageContentRevealed = it
+                            },
+                            onFullyHidden = {
+                                imageContentHidden = it
+                            },
                             particleColor = Color(0xFFEFD7CA),
                             particlesSpeedMultiplier = 2.5f,
                             dividerColor = Color(0xFF2D251C),
@@ -86,6 +99,7 @@ class MainActivity : ComponentActivity() {
                                 )
                             }
                         }
+                        Text(text="Image revealed ? $imageContentRevealed  |  hidden ? $imageContentHidden")
 
                         Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center){
                             ContentReveal(
@@ -93,6 +107,12 @@ class MainActivity : ComponentActivity() {
                                 currentProgress = progress,
                                 progressRange = 0..100,
                                 touchEnabled = true,
+                                onFullyRevealed = {
+                                    textContentRevealed = it
+                                },
+                                onFullyHidden = {
+                                    textContentHidden = it
+                                },
                                 particlesCount = 80,
                                 particleColor = Color(0xFF4280EA),
                                 particlesSpeedMultiplier = 1.2f
@@ -117,6 +137,7 @@ class MainActivity : ComponentActivity() {
                                 }
                             }
                         }
+                        Text(text="Text revealed ? $textContentRevealed  |  hidden ? $textContentHidden")
 
                     }
                 }
