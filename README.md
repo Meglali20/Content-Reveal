@@ -7,6 +7,9 @@ A sophisticated reveal effect library for Jetpack Compose that creates an intera
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
 
+https://github.com/user-attachments/assets/72fa9b5a-ddea-4eb8-b2c4-872f7c7a4115
+
+
 ## Features
 
 - Interactive touch-enabled reveal with smooth animations
